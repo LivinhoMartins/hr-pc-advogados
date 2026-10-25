@@ -69,30 +69,50 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================================================
-// HOLOFOTE SEGUIDOR: ACENDE APENAS UM CARD POR VEZ NA ROLAGEM MOBILE
+// CARDS MÉDICOS: no celular, destaca apenas o card mais próximo do centro
+// da tela conforme a rolagem (para cima ou para baixo). No desktop, o hover
+// continua sendo controlado pelo CSS.
 // ==========================================================================
 document.addEventListener("DOMContentLoaded", () => {
-    // Agora o JavaScript vai achar seus cards certinho!
-    const cards = document.querySelectorAll('.card-medico');
+  const cards = Array.from(document.querySelectorAll(".card-medico"));
+  const somenteToque = window.matchMedia("(hover: none), (pointer: coarse)");
 
-    const checarScroll = () => {
-        const alturaDispositivo = window.innerHeight;
+  if (!cards.length || !somenteToque.matches) return;
 
-        cards.forEach(card => {
-            const posicaoCard = card.getBoundingClientRect().top;
-            const fimDoCard = card.getBoundingClientRect().bottom;
+  let quadroPendente = false;
 
-            // Ativa o card quando ele entra na tela ao descer
-            if (posicaoCard < (alturaDispositivo * 0.85) && fimDoCard > 0) {
-                card.classList.add('ativo');
-            } 
-            // Reseta o card se o usuário subir a tela totalmente
-            else if (posicaoCard > alturaDispositivo) {
-                card.classList.remove('ativo');
-            }
-        });
-    };
+  const atualizarCardAtivo = () => {
+    quadroPendente = false;
+    const linhaAtivacao = window.innerHeight * 0.52;
+    let cardMaisProximo = null;
+    let menorDistancia = Infinity;
 
-    checarScroll();
-    window.addEventListener('scroll', checarScroll);
+    cards.forEach((card) => {
+      const rect = card.getBoundingClientRect();
+      const centroCard = rect.top + rect.height / 2;
+      const distancia = Math.abs(centroCard - linhaAtivacao);
+      // Considera apenas cartões que estejam visíveis na tela.
+      const visivel = rect.bottom > 0 && rect.top < window.innerHeight;
+
+      if (visivel && distancia < menorDistancia) {
+        menorDistancia = distancia;
+        cardMaisProximo = card;
+      }
+    });
+
+    // Remove o destaque dos outros antes de ativar o escolhido: só um por vez.
+    cards.forEach((card) => {
+      card.classList.toggle("ativo", card === cardMaisProximo);
+    });
+  };
+
+  const agendarAtualizacao = () => {
+    if (quadroPendente) return;
+    quadroPendente = true;
+    window.requestAnimationFrame(atualizarCardAtivo);
+  };
+
+  atualizarCardAtivo();
+  window.addEventListener("scroll", agendarAtualizacao, { passive: true });
+  window.addEventListener("resize", agendarAtualizacao);
 });

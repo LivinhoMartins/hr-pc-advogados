@@ -432,6 +432,44 @@ body {
   border-color: #112240;
 }
 
+/* Em telas touch, o destaque vem da classe .ativo controlada pela rolagem.
+   Evita o :hover persistente que alguns celulares simulam depois de um toque. */
+@media (hover: none), (pointer: coarse) {
+  .card-medico:hover {
+    transform: none;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(17, 34, 64, 0.03),
+      0 2px 4px -1px rgba(17, 34, 64, 0.02);
+  }
+
+  .card-medico:hover::after {
+    transform: scaleX(0);
+  }
+
+  .card-medico:hover .card-icone {
+    background-color: rgba(161, 130, 74, 0.08);
+    color: #a1824a;
+    border-color: rgba(161, 130, 74, 0.15);
+  }
+
+  .card-medico.ativo {
+    transform: translateY(-8px) scale(1);
+    border-color: rgba(161, 130, 74, 0.3);
+    box-shadow: 0 20px 25px -5px rgba(17, 34, 64, 0.08),
+      0 10px 10px -5px rgba(17, 34, 64, 0.04);
+  }
+
+  .card-medico.ativo::after {
+    transform: scaleX(1);
+  }
+
+  .card-medico.ativo .card-icone {
+    background-color: #112240;
+    color: #ffffff;
+    border-color: #112240;
+  }
+}
+
 /* ==========================================================================
    6. MEDIA QUERIES (COMPUTADORES E TELAS GRANDES)
    ========================================================================== */
