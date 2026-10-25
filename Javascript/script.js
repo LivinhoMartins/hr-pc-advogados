@@ -71,43 +71,28 @@ document.addEventListener("DOMContentLoaded", () => {
 // ==========================================================================
 // HOLOFOTE SEGUIDOR: ACENDE APENAS UM CARD POR VEZ NA ROLAGEM MOBILE
 // ==========================================================================
-const cardsMedicos = document.querySelectorAll(".card-medico");
+document.addEventListener("DOMContentLoaded", () => {
+    // Agora o JavaScript vai achar seus cards certinho!
+    const cards = document.querySelectorAll('.card-medico');
 
-const focarCardNoScroll = () => {
-  // Só roda em telas menores (celular) para não brigar com o mouse no PC
-  if (window.innerWidth < 768) {
-    // Linha de leitura virtual no centro da tela
-    const centroDaTela = window.innerHeight / 2;
+    const checarScroll = () => {
+        const alturaDispositivo = window.innerHeight;
 
-    let cardMaisProximo = null;
-    let menorDistancia = Infinity;
+        cards.forEach(card => {
+            const posicaoCard = card.getBoundingClientRect().top;
+            const fimDoCard = card.getBoundingClientRect().bottom;
 
-    // Passo 1: Descobrir qual dos 3 cartões está mais perto do centro da visão
-    cardsMedicos.forEach((card) => {
-      const posicao = card.getBoundingClientRect();
-      // Calcula o centro do próprio cartão na vertical
-      const centroDoCard = posicao.top + posicao.height / 2;
-      // Distância matemática absoluta entre o centro do cartão e o centro da tela
-      const distancia = Math.abs(centroDaTela - centroDoCard);
+            // Ativa o card quando ele entra na tela ao descer
+            if (posicaoCard < (alturaDispositivo * 0.85) && fimDoCard > 0) {
+                card.classList.add('ativo');
+            } 
+            // Reseta o card se o usuário subir a tela totalmente
+            else if (posicaoCard > alturaDispositivo) {
+                card.classList.remove('ativo');
+            }
+        });
+    };
 
-      if (distancia < menorDistancia) {
-        menorDistancia = distancia;
-        cardMaisProximo = card;
-      }
-    });
-
-    // Passo 2: Acender o mais próximo e apagar todos os outros na mesma hora
-    cardsMedicos.forEach((card) => {
-      if (card === cardMaisProximo) {
-        card.classList.add("card-ativo"); // Acende o atual
-      } else {
-        card.classList.remove("card-ativo"); // Apaga o anterior ou o próximo
-      }
-    });
-  }
-};
-
-// Monitora a rolagem para cima e para baixo continuamente
-window.addEventListener("scroll", focarCardNoScroll);
-// Executa uma vez ao carregar a página caso o primeiro já comece no meio
-window.addEventListener("load", focarCardNoScroll);
+    checarScroll();
+    window.addEventListener('scroll', checarScroll);
+});

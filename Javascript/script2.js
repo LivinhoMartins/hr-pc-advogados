@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
   // 4. SCROLL REVEAL (ENTRADA FLUIDA)
-  const secoes = document.querySelectorAll(".efeito-surgir");
+  const secoes = document.querySelectorAll("section");
   const animarScroll = () => {
     secoes.forEach((s) => {
       if (s.getBoundingClientRect().top < (window.innerHeight / 5) * 4)
