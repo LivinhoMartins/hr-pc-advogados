@@ -1,0 +1,850 @@
+/* ==========================================================================
+   1. RESET & CONFIGURAÇÕES GLOBAIS
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Rolagem suave na página */
+html {
+  scroll-smooth: flex;
+}
+
+body {
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background-color: #f8fafc; /* Fundo gelo limpo, nada de escuridão total */
+  color: #1e293b; /* Cinza grafite premium para leitura leve */
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   2. HEADER (MENU SUPERIOR)
+   ========================================================================== */
+.menu-topo {
+  background-color: #ffffff; /* Menu branco brilhante e moderno */
+  color: #112240;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-b: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.menu-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logotipo {
+  display: flex;
+  flex-direction: column;
+}
+
+.marca-principal {
+  font-family: "Georgia", serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #112240;
+  letter-spacing: 0.5px;
+}
+
+.marca-sub {
+  color: #a1824a; /* Dourado mais fosco e chique */
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-top: 2px;
+  font-weight: 600;
+}
+
+.btn-emergencia {
+  background-color: #112240;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.btn-emergencia:hover {
+  background-color: #a1824a;
+  transform: translateY(-1px);
+}
+
+/* ==========================================================================
+   3. SEÇÃO HERO (FOCO EM LEVEZA E CONTRASTE)
+   ========================================================================== */
+.secao-hero {
+  background-color: #ffffff; /* Fundo puro branco para dar ar médico e limpo */
+  padding: 80px 20px;
+  position: relative;
+  /* Padrão geométrico sutil no fundo para não ficar totalmente liso */
+  background-image: radial-gradient(#e2e8f0 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+.hero-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+/* Etiqueta flutuante moderna */
+.tag-especialidade {
+  background-color: rgba(17, 34, 64, 0.05);
+  color: #112240;
+  border: 1px solid rgba(17, 34, 64, 0.1);
+  padding: 8px 18px;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-radius: 50px;
+}
+
+/* Título Serifado de alta classe (com contraste claro vs escuro) */
+.titulo-principal {
+  font-family: "Georgia", serif;
+  font-size: 36px; /* Aumentado no mobile */
+  line-height: 1.2;
+  font-weight: 700; /* Forçando negrito para dar imponência */
+  color: #112240;
+  max-width: 900px;
+  letter-spacing: -0.5px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.destaque-ouro {
+  color: #a1824a;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+/* Subtítulo elegante e espaçado */
+.subtitulo-herois {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #475569;
+  max-width: 680px;
+  font-weight: 400;
+}
+
+.subtitulo-herois strong {
+  color: #112240;
+  font-weight: 600;
+}
+
+.area-botao-hero {
+  width: 100%;
+  margin-top: 15px;
+}
+
+/* O Botão de Conversão vira o ponto focal brilhante da tela */
+.btn-whatsapp-hero {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #112240 0%, #1e3a6d 100%);
+  color: #ffffff;
+  border: 1px solid #112240;
+  width: 100%;
+  max-width: 340px;
+  padding: 18px 28px;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(17, 34, 64, 0.15);
+  transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.btn-whatsapp-hero:hover {
+  background: linear-gradient(135deg, #a1824a 0%, #c5a880 100%);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(161, 130, 74, 0.3);
+}
+
+.icone-wpp {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   4. MEDIA QUERIES (TELA GRANDE / PC)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .secao-hero {
+    padding: 120px 20px;
+  }
+
+  .titulo-principal {
+    font-size: 72px;
+    letter-spacing: -0.5px;
+    justify-content: center; /* Força o botão a ir para o centro exato da tela */
+  }
+
+  .subtitulo-herois {
+    font-size: 18px;
+  }
+}
+.area-botao-hero {
+  width: 100%;
+  margin-top: 15px;
+
+  /* 🚀 ADICIONE ESTAS TRÊS LINHAS ABAIXO: */
+  display: flex;
+  justify-content: center; /* Força o botão a ir para o centro exato da tela */
+  align-items: center;
+}
+
+@media (min-width: 992px) {
+  /* ... mantenha as regras anteriores do Hero e do Título como estão ... */
+
+  /* 🚀 A RECONFIGURAÇÃO TOTAL DO BLOCO DE APRESENTAÇÃO: */
+  .advogados-container {
+    flex-direction: column; /* Mantém a leitura contínua de cima para baixo como o resto do site */
+    align-items: center; /* Centraliza tudo horizontalmente */
+    max-width: 850px; /* PRENDE O TAMANHO: Alinha milimetricamente com o bloco superior */
+    margin: 0 auto; /* Garante que o bloco fique bem no meio do monitor */
+    gap: 50px;
+  }
+
+  .bloco-fotos-advogados {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Força as duas fotos a ficarem lado a lado no PC */
+    max-width: 650px; /* Limita o tamanho das fotos para não ficarem gigantescas */
+    margin: 0 auto;
+  }
+
+  .bloco-texto-advogados {
+    align-items: center; /* Centraliza os títulos e o text-align interno */
+    text-align: center; /* Força a simetria com os blocos superiores */
+  }
+
+  .bloco-texto-advogados h2 {
+    font-size: 38px; /* Letras imponentes, mas no tamanho exato do padrão do site */
+    text-align: center;
+  }
+
+  .linha-decorativa-esquerda {
+    margin: 0 auto 25px auto; /* Centraliza a barrinha de ouro abaixo do título */
+  }
+
+  .texto-institucional {
+    font-size: 16px;
+    line-height: 1.75;
+    text-align: center; /* Retira o Justificado que esticava as palavras e centraliza o parágrafo */
+    color: #475569;
+  }
+
+  .mini-metricas {
+    justify-content: center; /* Centraliza os dois tópicos de métricas na base do texto */
+    gap: 60px;
+  }
+
+  .secao-cta-final h2 {
+    font-size: 46px;
+    letter-spacing: -1px;
+    line-height: 1.2;
+  }
+
+  .secao-cta-final p {
+    font-size: 18px;
+  }
+}
+
+/* ==========================================================================
+   5. SEÇÃO ESPECIALIDADES (CSS GRID CORRIGIDO E CORES PREMIUM)
+   ========================================================================= */
+.secao-especialidades {
+  background-color: #f1f5f9; /* Fundo cinza azulado claro para dar contraste com os cartões */
+  padding: 80px 20px;
+}
+
+.especialidades-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.especialidades-topo {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.especialidades-topo h2 {
+  font-family: "Georgia", serif;
+  font-size: 32px;
+  color: #112240;
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.linha-decorativa {
+  width: 60px;
+  height: 3px;
+  background-color: #a1824a;
+  margin: 0 auto 20px auto;
+  border-radius: 2px;
+}
+
+.especialidades-topo p {
+  font-size: 16px;
+  color: #475569;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* 🚀 CSS GRID RECONFIGURADO: Responsivo automático de verdade */
+.grid-especialidades {
+  display: grid;
+  /* Essa linha mágica cria colunas automáticas de no mínimo 320px se houver espaço (PC), senão empilha (Mobile) */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px; /* Espaçamento elegante entre os blocos */
+}
+
+/* Estilo do Cartão Médico Premium (Formato Quadradinho) */
+.card-medico {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha os textos e ícones à esquerda dentro do quadrado */
+  min-height: 280px; /* Garante que todos fiquem com o mesmo formato quadrado */
+  box-shadow:
+    0 4px 6px -1px rgba(17, 34, 64, 0.03),
+    0 2px 4px -1px rgba(17, 34, 64, 0.02);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Linha dourada decorativa escondida na base do cartão que sobe no hover */
+.card-medico::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #a1824a, #c5a880);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+/* Ícone com círculo dourado e fundo suave */
+.card-icone {
+  width: 55px;
+  height: 55px;
+  background-color: rgba(
+    161,
+    130,
+    74,
+    0.08
+  ); /* Fundo dourado translúcido ultra leve */
+  color: #a1824a; /* Ícone dourado metálico */
+  border-radius: 50%; /* Formato circular premium */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  border: 1px solid rgba(161, 130, 74, 0.15);
+  transition: all 0.3s ease;
+}
+
+.card-icone svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+.card-medico {
+  opacity: 0;
+  transform: translateY(50px) scale(0.95);
+  transition:
+    transform 0.8s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.8s ease;
+  will-change: transform, opacity;
+}
+
+/* Estado Ativado: Quando o dedo desliza e passa por eles, eles aparecem suavemente */
+.card-medico.ativo {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.card-medico h3 {
+  font-family: "Georgia", serif;
+  font-size: 20px;
+  color: #112240; /* Azul profundo no título para contraste */
+  margin-bottom: 14px;
+  font-weight: 600;
+}
+
+.card-medico p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569; /* Cinza suave para leitura confortável */
+}
+
+/* 🌟 INTERAÇÃO E CORES NO HOVER (AO PASSAR O MOUSE) */
+.card-medico:hover {
+  transform: translateY(-8px);
+  border-color: rgba(161, 130, 74, 0.3);
+  box-shadow:
+    0 20px 25px -5px rgba(17, 34, 64, 0.08),
+    0 10px 10px -5px rgba(17, 34, 64, 0.04);
+}
+
+.card-medico:hover::after {
+  transform: scaleX(1); /* Faz a barrinha de ouro aparecer na base */
+}
+
+.card-medico:hover .card-icone {
+  background-color: #112240; /* Círculo vira azul marinho corporativo */
+  color: #ffffff; /* Ícone acende em branco */
+  border-color: #112240;
+}
+
+/* Em telas touch, o destaque vem da classe .ativo controlada pela rolagem.
+   Evita o :hover persistente que alguns celulares simulam depois de um toque. */
+@media (hover: none), (pointer: coarse) {
+  .card-medico:hover {
+    transform: none;
+    border-color: #e2e8f0;
+    box-shadow: 0 4px 6px -1px rgba(17, 34, 64, 0.03),
+      0 2px 4px -1px rgba(17, 34, 64, 0.02);
+  }
+
+  .card-medico:hover::after {
+    transform: scaleX(0);
+  }
+
+  .card-medico:hover .card-icone {
+    background-color: rgba(161, 130, 74, 0.08);
+    color: #a1824a;
+    border-color: rgba(161, 130, 74, 0.15);
+  }
+
+  .card-medico.ativo {
+    transform: translateY(-8px) scale(1);
+    border-color: rgba(161, 130, 74, 0.3);
+    box-shadow: 0 20px 25px -5px rgba(17, 34, 64, 0.08),
+      0 10px 10px -5px rgba(17, 34, 64, 0.04);
+  }
+
+  .card-medico.ativo::after {
+    transform: scaleX(1);
+  }
+
+  .card-medico.ativo .card-icone {
+    background-color: #112240;
+    color: #ffffff;
+    border-color: #112240;
+  }
+}
+
+/* ==========================================================================
+   6. MEDIA QUERIES (COMPUTADORES E TELAS GRANDES)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .secao-hero {
+    padding: 120px 20px;
+  }
+
+  .titulo-principal {
+    font-family: "Georgia", serif;
+    font-size: 32px;
+    line-height: 1.25;
+    font-weight: 400;
+    color: #112240;
+    max-width: 800px;
+    letter-spacing: -0.5px;
+    text-align: center; /* Força todas as linhas do título a ficarem no centro exato */
+  }
+
+  .subtitulo-herois {
+    font-size: 18px;
+  }
+
+  .btn-whatsapp-hero {
+    width: auto;
+    padding: 18px 45px;
+  }
+  /* 🚀 ADICIONE ESTAS DUAS REGRAS DENTRO DO SEU @MEDIA EXISTENTE: */
+  .advogados-container {
+    flex-direction: row; /* Coloca as fotos de um lado e o texto do outro no PC */
+    align-items: center;
+    gap: 80px; /* Espaço amplo e luxuoso entre as duas colunas */
+  }
+
+  .bloco-fotos-advogados {
+    width: 50%; /* Fotos ocupam exatamente metade da tela */
+  }
+
+  .bloco-texto-advogados {
+    width: 50%; /* Texto ocupa a outra metade */
+  }
+
+  .bloco-texto-advogados h2 {
+    font-size: 42px; /* Título mais imponente em telas de monitores */
+  }
+}
+
+/* ==========================================================================
+   6. SEÇÃO APRESENTAÇÃO DOS ADVOGADOS (CORRIGIDA E AMPLA)
+   ========================================================================== */
+.secao-advogados {
+  background-color: #ffffff;
+  padding: 60px 20px;
+  border-top: 1px solid #e2e8f0;
+  width: 100%;
+}
+
+.advogados-container {
+  max-width: 1200px; /* Alinha com a largura máxima do resto do site */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column; /* Padrão celular: empilhado */
+  gap: 40px;
+}
+
+.bloco-fotos-advogados {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.card-foto-socio {
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
+}
+
+.card-foto-socio:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 20px rgba(17, 34, 64, 0.05);
+  border-color: rgba(161, 130, 74, 0.2);
+}
+
+.area-foto-placeholder {
+  width: 100%;
+  height: 340px;
+  background-color: #e2e8f0;
+  overflow: hidden;
+}
+
+.foto-advogado {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(15%);
+  transition: all 0.4s ease;
+}
+
+.card-foto-socio:hover .foto-advogado {
+  filter: grayscale(0%);
+  transform: scale(1.03);
+}
+
+.info-foto-socio {
+  padding: 20px;
+  text-align: center;
+}
+
+.info-foto-socio h4 {
+  font-family: "Georgia", serif;
+  font-size: 18px;
+  color: #112240;
+  margin-bottom: 4px;
+}
+
+.info-foto-socio span {
+  color: #a1824a;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.bloco-texto-advogados {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+}
+
+.tag-mini-secao {
+  color: #a1824a;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+.bloco-texto-advogados h2 {
+  font-family: "Georgia", serif;
+  font-size: 28px;
+  color: #112240;
+  line-height: 1.3;
+  margin-bottom: 15px;
+}
+
+/* 🛠️ REMOVIDO O CARACTERE JAPONÊS QUE QUEBRAVA A LINHA DECORATIVA */
+.linha-decorativa-esquerda {
+  width: 40px;
+  height: 3px;
+  background-color: #a1824a;
+  margin-bottom: 25px;
+  border-radius: 2px;
+}
+
+.texto-institucional {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #475569;
+  margin-bottom: 20px;
+  text-align: justify; /* Melhora a distribuição do texto longo */
+}
+
+.texto-institucional strong {
+  color: #112240;
+  font-weight: 600;
+}
+
+.mini-metricas {
+  display: flex;
+  gap: 40px;
+  margin-top: 15px;
+  width: 100%;
+  border-top: 1px solid #e2e8f0;
+  padding-top: 25px;
+}
+
+.metrica-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.metrica-titulo {
+  font-size: 11px;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.metrica-desc {
+  font-size: 16px;
+  color: #112240;
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   8. SEÇÃO DIFERENCIAIS
+   ========================================================================== */
+.secao-diferenciais {
+  background-color: #f1f5f9; /* Mesma cor de fundo das especialidades para criar unidade */
+  padding: 80px 20px;
+}
+
+.diferenciais-container {
+  max-width: 800px; /* Mantém o padrão de largura confortável do site */
+  margin: 0 auto;
+}
+
+.diferenciais-topo {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.lista-diferenciais {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.diferencial-item {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 25px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.numero-diferencial {
+  font-family: "Georgia", serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #a1824a; /* Dourado nos números destaca a lista */
+}
+
+.diferencial-conteudo h4 {
+  font-size: 16px;
+  color: #112240;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.diferencial-conteudo p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+/* ==========================================================================
+   9. SEÇÃO CTA FINAL (ESTILO COMPACTO PREMIUM)
+   ========================================================================== */
+.secao-cta-final {
+  background-color: #ffffff;
+  padding: 90px 20px;
+  text-align: center;
+}
+
+.cta-final-container {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.secao-cta-final h2 {
+  font-family: "Georgia", serif;
+  font-size: 28px;
+  color: #112240;
+  font-weight: 700;
+}
+
+.secao-cta-final p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #475569;
+}
+
+/* ==========================================================================
+   10. RODAPÉ INSTITUCIONAL
+   ========================================================================== */
+.rodape-escritorio {
+  background-color: #112240; /* Fecha o site com o azul marinho clássico */
+  color: #ffffff;
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 1px solid #1e293b;
+}
+
+.rodape-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rodape-marca {
+  font-family: "Georgia", serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.rodape-dados {
+  font-size: 12px;
+  color: #c5a880;
+  font-weight: 500;
+}
+
+.rodape-aviso {
+  font-size: 11px;
+  color: #94a3b8;
+  max-width: 500px;
+  margin: 8px auto 0 auto;
+  line-height: 1.5;
+}
+/* Estilo do Plantão Dinâmico */
+.plantao-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+  font-size: 12px;
+  color: #475569;
+  font-weight: 500;
+}
+
+.ponto-verde {
+  width: 8px;
+  height: 8px;
+  background-color: #22c55e;
+  border-radius: 50%;
+  display: inline-block;
+  animation: pulsar 1.8s infinite ease-in-out;
+}
+
+@keyframes pulsar {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.6;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.4);
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+    box-shadow: 0 0 0 6px rgba(34, 197, 94, 0);
+  }
+  100% {
+    transform: scale(0.9);
+    opacity: 0.6;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+/* Prepara as seções para o efeito de revelação do JavaScript */
+.efeito-surgir {
+  opacity: 0;
+  transform: translateY(40px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+/* Classe que o JavaScript vai injetar dinamicamente na página */
+.secao-visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
